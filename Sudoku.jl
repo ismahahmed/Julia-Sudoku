@@ -4,7 +4,7 @@ struct Sudoku
 
 # populate 9x9 matrix with 0's
     function Sudoku()
-        c,r = 3,3
+        c,r = 9,9
         b = zeros(Int8, c,r)
         new(b)
     end
