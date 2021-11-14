@@ -1,4 +1,4 @@
-# Sudoku Colver in Julia
+# Sudoku Solver in Julia
 
 On going project for my CS 330 Programming Languages course. For this project, I will be implementing a sudoku solver in Julia lang. 
 
