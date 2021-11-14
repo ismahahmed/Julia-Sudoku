@@ -1,11 +1,6 @@
 # Function to print out the sudoku board
-function printBoard(list)
-    for x in 1:9
-        for y in 1:9
-            println(list[x][y])
-        println("")
-        end
-    end
+function printBoard(grid)
+    display(grid)
 end
 
 # Function to get row section of board
