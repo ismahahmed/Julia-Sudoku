@@ -19,6 +19,17 @@ function getColBlock(grid, col)
     return blockc[c]
 end
 
+function findEmpty(grid)
+    for i in 1:9
+        for x in 1:9
+            if grid[i][x] == 0
+                return i, x
+            end
+        end
+    end
+    return false
+end
+
 # Check to see if you can place number 
 function canPlace(grid, row, col, n)
     if grid[row][col]!= 0
@@ -44,4 +55,11 @@ function canPlace(grid, row, col, n)
         end
     end
     return true
+end
+
+function input(grid, r, c, n)
+    if canPlace(grid, r, c, n) == true
+        grid[r][c] = n
+    end
+    display(grid)
 end
