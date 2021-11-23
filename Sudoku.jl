@@ -1,6 +1,23 @@
 # Function to print out the sudoku board
-function printBoard(grid)
-    display(grid)
+# Function to print out the sudoku board
+function printBoard(list)
+    n1 = 0
+    n2 = 0
+    for i in 1:9
+        if n1%3==0
+            print(" - - - - - - - - - \n")
+        end
+        for j in 1:9
+            if n2%3 == 0
+                print(" | ")
+            end
+            n2 = n2 +1
+            print(grid[i][j])
+        end
+        n1 = n1 + 1
+        print("\n")
+    end
+    print(" - - - - - - - - - \n")
 end
 
 # Function to get row section of board
