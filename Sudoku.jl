@@ -11,7 +11,7 @@ function printBoard(list)
                 print(" | ")
             end
             p = p +1
-            print(grid[i][j])
+            print(list[i][j])
             print(" ")
         end
         n = n + 1
@@ -101,3 +101,37 @@ function solving(grid)
     end
     return false
 end
+
+# Getting User Input
+function getBoard()
+    user_board =[[0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    print("- - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+    print("Hello! This program solves (solvable) sudoku boards! ")
+    print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - \n")
+    print("Insert Board Values")
+    printBoard(user_board)
+    for r in 1:9
+        for c in 1:9
+            print("Enter Value for row: ", r, " and col: ", c)
+            print("If the cell is empty, enter 0")
+            val = parse(Int64, readline())
+            user_board[r][c] = val
+            printBoard(user_board)
+        end
+    end
+    if solving(user_board)
+        print("Solved: \n")
+        printBoard(user_board)
+    else
+        print("Board Unsolvable")
+    end
+end
+
