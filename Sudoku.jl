@@ -1,23 +1,24 @@
 # Function to print out the sudoku board
-# Function to print out the sudoku board
 function printBoard(list)
-    n1 = 0
-    n2 = 0
+    n = 0
+    p = 0
     for i in 1:9
-        if n1%3==0
-            print(" - - - - - - - - - \n")
+        if n%3==0
+            print("  -  -  -  -  -  -  -  -  - \n")
         end
         for j in 1:9
-            if n2%3 == 0
+            if p%3 == 0
                 print(" | ")
             end
-            n2 = n2 +1
+            p = p +1
             print(grid[i][j])
+            print(" ")
         end
-        n1 = n1 + 1
+        n = n + 1
+        print(" |")
         print("\n")
     end
-    print(" - - - - - - - - - \n")
+    print("  -  -  -  -  -  -  -  -  - \n")
 end
 
 # Function to get row section of board
@@ -36,7 +37,7 @@ function getColBlock(grid, col)
     return blockc[c]
 end
 
-function findEmpty(grid)
+function findEmpty(grid)    
     for i in 1:9
         for x in 1:9
             if grid[i][x] == 0
@@ -79,4 +80,24 @@ function input(grid, r, c, n)
         grid[r][c] = n
     end
     display(grid)
+end
+
+function solving(grid)
+    empty = findEmpty(grid)
+    if empty == false
+        return(true)
+    else
+        r, c = empty
+    end
+
+    for y in 1:9
+        if canPlace(grid, r, c, y)
+            grid[r][c] = y
+            if solving(grid) == true # backtracking
+                return true
+            end
+            grid[r][c] = 0
+        end
+    end
+    return false
 end
