@@ -75,6 +75,7 @@ function canPlace(grid, row, col, n)
     return true
 end
 
+# Getting Input
 function input(grid, r, c, n)
     if canPlace(grid, r, c, n) == true
         grid[r][c] = n
@@ -82,21 +83,22 @@ function input(grid, r, c, n)
     display(grid)
 end
 
+# Solving Sudoku Board
 function solving(grid)
-    empty = findEmpty(grid)
-    if empty == false
+    empty = findEmpty(grid) # find empty value location
+    if empty == false # if empty is false, then the board is solved. Return false
         return(true)
-    else
-        r, c = empty
+    else 
+        r, c = empty # get row and column location of empty value location
     end
 
-    for y in 1:9
-        if canPlace(grid, r, c, y)
-            grid[r][c] = y
+    for y in 1:9 # loop through number 1-9 
+        if canPlace(grid, r, c, y) # check to see if that number can be placed in r c location
+            grid[r][c] = y 
             if solving(grid) == true # backtracking
-                return true
+                return true # if grid is solved, get out of loop
             end
-            grid[r][c] = 0
+            grid[r][c] = 0 # if that value does not work, replace with 0
         end
     end
     return false
@@ -134,4 +136,4 @@ function getBoard()
         print("Board Unsolvable")
     end
 end
-
+ 
