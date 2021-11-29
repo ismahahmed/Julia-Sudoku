@@ -77,7 +77,7 @@ end
 
 # Check to see if you can place number 
 function canPlace(grid, row, col, n)
-    if n > 9
+    if n > 9 || n < 0
         return false
     end
     if grid[row][col]!= 0
