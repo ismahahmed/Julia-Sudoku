@@ -77,6 +77,9 @@ end
 
 # Check to see if you can place number 
 function canPlace(grid, row, col, n)
+    if n > 9
+        return false
+    end
     if grid[row][col]!= 0
         return false
     end
@@ -184,10 +187,14 @@ function intro()
         u = getBoard()
         #solving(u)
         if solving(u)
-            print("Solved: \n")
+            printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"; color = :blue)
+            print("SOLVED BOARD: \n")
+            printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n"; color = :blue)
             printBoard(u)
         else
-            print("Board Unsolvable")
+            printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"; color = :blue)
+            print("BOARD UNSOLVABLE\n")
+            printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n"; color = :blue)
         end
     else
         print("\n Goodbye")
