@@ -115,10 +115,7 @@ function getBoard()
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-    printstyled("- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"; color = :blue)
-    print("Hello! This program solves (solvable) sudoku boards! \n")
-    printstyled("- - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n"; color = :blue)
-    print("Insert Board Values\n")
+    print("\nInsert Board Values\n")
     printBoard(user_board)
     for r in 1:9
         for c in 1:9
@@ -146,4 +143,26 @@ function getBoard()
             end
          end
     end     
+    return(user_board)
+end
+ 
+# Introduction to program
+function intro()
+    printstyled("- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"; color = :blue)
+    print("Hello! This program solves (solvable) sudoku boards! \n")
+    printstyled("- - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n"; color = :blue)
+    print("Options: Enter 1 to solve user board. Enter 2 to exit program ")
+    u = parse(Int64, readline())
+    if u == 1
+        u = getBoard()
+        #solving(u)
+        if solving(u)
+            print("Solved: \n")
+            printBoard(u)
+        else
+            print("Board Unsolvable")
+        end
+    else
+        print("\n Goodbye")
+    end
 end
