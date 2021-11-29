@@ -21,6 +21,33 @@ function printBoard(list)
     print("  -  -  -  -  -  -  -  -  - \n")
 end
 
+# Print board function the gets recent input and puts it in color
+function printBoard2(list, r, c) 
+    n = 0
+    p = 0
+    for i in 1:9
+        if n%3==0
+            printstyled("  -  -  -  -  -  -  -  -  \n"; color = :magenta) # https://www.geeksforgeeks.org/printing-output-on-screen-in-julia/ 
+        end
+        for j in 1:9
+            if p%3 == 0
+                printstyled("| "; color = :magenta)
+            end
+            p = p +1
+            if i == r && j == c
+                printstyled(list[i][j]; color = :red)
+            else
+                print(list[i][j])
+            end
+            print(" ")
+        end
+        n = n + 1
+        printstyled("|"; color = :magenta)
+        print("\n")
+    end
+    printstyled("  -  -  -  -  -  -  -  -  \n"; color = :magenta)
+end 
+
 # Function to get row section of board
 function getRowBlock(grid, row)
     rowBlock = Dict(1 => 1, 2 => 1, 3 => 1, 4 => 2, 5 => 2, 6 => 2, 7 => 3, 8 => 3, 9 => 3)
@@ -126,13 +153,13 @@ function getBoard()
                 val = parse(Int64, readline())
                 if val == 0
                     user_board[r][c] = val
-                    printBoard(user_board)
+                    printBoard2(user_board, r, c)
                     v = true
                 end
                 if val != 0
                     if canPlace(user_board, r, c, val) == true
                         user_board[r][c] = val
-                        printBoard(user_board)
+                        printBoard2(user_board, r, c)
                         v = true
                     else
                             print("Invalid input, try again\n")
