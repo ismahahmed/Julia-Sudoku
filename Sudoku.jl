@@ -49,19 +49,11 @@ function printBoard2(list, r, c)
 end 
 
 # Function to get row section of board
-function getRowBlock(grid, row)
-    rowBlock = Dict(1 => 1, 2 => 1, 3 => 1, 4 => 2, 5 => 2, 6 => 2, 7 => 3, 8 => 3, 9 => 3)
-    blockr = Dict(1 => [1, 2, 3], 2 => [4, 5, 6], 3 => [7, 8, 9])
-    r = rowBlock[row]
-    return blockr[r]
-end
-
-# Function to get column section of board
-function getColBlock(grid, col)
-    colBlock = Dict(1 => 1, 2 => 1, 3 => 1, 4 => 2, 5 => 2, 6 => 2, 7 => 3, 8 => 3, 9 => 3)
-    blockc = Dict(1 => [1, 2, 3], 2 => [4, 5, 6], 3 => [7, 8, 9])
-    c = colBlock[col] 
-    return blockc[c]
+function getBlock(grid, n)
+    gridBlock = Dict(1 => 1, 2 => 1, 3 => 1, 4 => 2, 5 => 2, 6 => 2, 7 => 3, 8 => 3, 9 => 3)
+    blockg = Dict(1 => [1, 2, 3], 2 => [4, 5, 6], 3 => [7, 8, 9])
+    r = gridBlock[n]
+    return blockg[r]
 end
 
 function findEmpty(grid)    
@@ -93,8 +85,8 @@ function canPlace(grid, row, col, n)
             return false
         end
     end
-    r = getRowBlock(grid, row)
-    c = getRowBlock(grid, col)
+    r = getBlock(grid, row)
+    c = getBlock(grid, col)
     for x in r
         for y in c
             if grid[x][y] == n
