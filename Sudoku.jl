@@ -117,10 +117,12 @@ function solving(grid)
     for y in 1:9 # loop through number 1-9 
         if canPlace(grid, r, c, y) # check to see if that number can be placed in r c location
             grid[r][c] = y 
-            if solving(grid) == true # backtracking
-                return true # if grid is solved, get out of loop
+            # backtracking: https://www.geeksforgeeks.org/backtracking-introduction/ 
+            if solving(grid) == true 
+                return true 
             end
-            grid[r][c] = 0 # if that value does not work, replace with 0
+            grid[r][c] = 0 # if solving(grid) does not solve with previous input, replace value with 0
+            #printBoard(grid)
         end
     end
     return false
@@ -179,12 +181,12 @@ function intro()
         u = getBoard()
         #solving(u)
         if solving(u)
-            printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"; color = :blue)
+            printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n"; color = :blue)
             print("SOLVED BOARD: \n")
             printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n"; color = :blue)
             printBoard(u)
         else
-            printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"; color = :blue)
+            printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n"; color = :blue)
             print("BOARD UNSOLVABLE\n")
             printstyled("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - \n\n"; color = :blue)
         end
